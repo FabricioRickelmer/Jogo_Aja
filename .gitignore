@@ -1,0 +1,7 @@
+# Caches e arquivos locais do Godot
+.godot/
+*.translation
+
+# Arquivos de sistema do Windows
+desktop.ini
+Thumbs.db
