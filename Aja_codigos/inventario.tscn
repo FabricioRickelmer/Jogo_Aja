@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://d3uxl2imlymmn"]
+
+[ext_resource type="Texture2D" uid="uid://brulkysrnun1g" path="res://Interface/ui_split.png" id="1_6i5pg"]
+[ext_resource type="Script" uid="uid://dvoixn7hawjn4" path="res://Itens/Inventario.gd" id="2_a4ott"]
+[ext_resource type="Texture2D" uid="uid://be23vbw8gdsax" path="res://Itens/32x32/Flecha.png" id="3_10c0t"]
+[ext_resource type="Texture2D" uid="uid://c2s7u23qpbcjd" path="res://Itens/32x32/Elmo.png" id="4_45bok"]
+[ext_resource type="Texture2D" uid="uid://clka2huado3ph" path="res://Itens/32x32/Arma2.png" id="5_s0ot3"]
+[ext_resource type="Texture2D" uid="uid://bu56odtl0iva2" path="res://Itens/32x32/Arco.png" id="6_ls3vy"]
+[ext_resource type="Texture2D" uid="uid://c7ad72njj077v" path="res://Itens/32x32/Arma.png" id="7_ep52j"]
+[ext_resource type="Texture2D" uid="uid://c7xu2a5wtfv2c" path="res://Itens/32x32/Armadura.png" id="8_c8522"]
+[ext_resource type="Texture2D" uid="uid://pv0xv0c6jhlq" path="res://Itens/32x32/Escudo.png" id="9_v8ot3"]
+[ext_resource type="Texture2D" uid="uid://b5tbasiuseg7c" path="res://Itens/32x32/Pocao.png" id="10_eh5xh"]
+[ext_resource type="Texture2D" uid="uid://cffmc4fs3hphs" path="res://Itens/32x32/ArmaFinal.png" id="11_qgxdf"]
+
+[node name="Inventario" type="Sprite2D" unique_id=1836658252]
+scale = Vector2(3.1610003, 2.265842)
+texture = ExtResource("1_6i5pg")
+script = ExtResource("2_a4ott")
+
+[node name="Flecha" type="Sprite2D" parent="." unique_id=1894411516]
+position = Vector2(-23.410301, -5.722046e-06)
+scale = Vector2(0.31635556, 0.44133705)
+texture = ExtResource("3_10c0t")
+
+[node name="QuantFlecha" type="Label" parent="Flecha" unique_id=1209128258]
+offset_left = 8.9999695
+offset_top = -3.9999871
+offset_right = 48.99997
+offset_bottom = 19.000013
+text = "0"
+
+[node name="Elmo" type="Sprite2D" parent="." unique_id=1245460549]
+position = Vector2(10.439724, -33.982956)
+scale = Vector2(0.31635556, 0.44133705)
+texture = ExtResource("4_45bok")
+
+[node name="Machado" type="Sprite2D" parent="." unique_id=1086120069]
+z_index = 1
+position = Vector2(-23.72667, -33.98294)
+scale = Vector2(0.31635556, 0.44133705)
+texture = ExtResource("5_s0ot3")
+
+[node name="Arco" type="Sprite2D" parent="." unique_id=352853706]
+z_index = 1
+position = Vector2(-25.308441, -16.770805)
+scale = Vector2(0.31635556, 0.44133705)
+texture = ExtResource("6_ls3vy")
+
+[node name="Espada" type="Sprite2D" parent="." unique_id=10479529]
+z_index = 1
+position = Vector2(-40.493515, -34.86563)
+scale = Vector2(0.31635556, 0.44133705)
+texture = ExtResource("7_ep52j")
+
+[node name="Armadura2" type="Sprite2D" parent="." unique_id=599363408]
+z_index = 1
+position = Vector2(-6.9598236, -33.541626)
+scale = Vector2(0.31635556, 0.44133705)
+texture = ExtResource("8_c8522")
+
+[node name="escudo" type="Sprite2D" parent="." unique_id=291621759]
+z_index = 1
+position = Vector2(-40.96805, -16.991486)
+scale = Vector2(0.30646944, 0.42754528)
+texture = ExtResource("9_v8ot3")
+
+[node name="Pocao" type="Sprite2D" parent="." unique_id=1857624353]
+position = Vector2(-8.541606, -17.212154)
+scale = Vector2(0.31635556, 0.44133705)
+texture = ExtResource("10_eh5xh")
+
+[node name="Nomepocao" type="Label" parent="Pocao" unique_id=750770382]
+offset_left = 6.0
+offset_top = -2.0
+offset_right = 46.0
+offset_bottom = 21.0
+text = "999"
+
+[node name="ArmaFinal" type="Sprite2D" parent="." unique_id=440442856]
+position = Vector2(-40.493504, -1.1980534e-05)
+scale = Vector2(0.31635556, 0.44133705)
+texture = ExtResource("11_qgxdf")

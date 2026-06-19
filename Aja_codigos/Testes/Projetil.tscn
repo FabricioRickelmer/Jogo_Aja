@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dy3itlvcft1t3"]
+
+[ext_resource type="Script" uid="uid://dn4s7ydemk45a" path="res://Combate/Componente_Projetil.gd" id="1_wuj7f"]
+[ext_resource type="Texture2D" uid="uid://b87tyffx7kf7w" path="res://Combate/Projetil.png" id="3_ikygf"]
+[ext_resource type="Script" uid="uid://dc5tjyfnqkpr4" path="res://Combate/Componente_Hitbox.gd" id="3_yu3el"]
+[ext_resource type="AudioStream" uid="uid://k52xki8oa650" path="res://Audio/Efeitos/arrow.wav" id="4_ikygf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ikygf"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yem6p"]
+radius = 4.0
+
+[node name="Projetil" type="Area2D" unique_id=1188393020]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_wuj7f")
+
+[node name="Collision_Osso" type="CollisionShape2D" parent="." unique_id=1550603924]
+position = Vector2(8, 28)
+shape = SubResource("CircleShape2D_ikygf")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=96164993]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("3_yu3el")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1903618103]
+position = Vector2(8, 28)
+shape = SubResource("CircleShape2D_yem6p")
+
+[node name="Sprite" type="Sprite2D" parent="Hitbox" unique_id=2101611932]
+position = Vector2(7, 29)
+texture = ExtResource("3_ikygf")
+
+[node name="SomArremesso" type="AudioStreamPlayer2D" parent="." unique_id=1568528949]
+stream = ExtResource("4_ikygf")
+autoplay = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

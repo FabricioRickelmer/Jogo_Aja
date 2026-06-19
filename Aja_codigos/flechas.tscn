@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ryy872gsy1w"]
+
+[ext_resource type="Script" uid="uid://drpl87w5aikkf" path="res://flechas.gd" id="1_gxj4e"]
+[ext_resource type="Texture2D" uid="uid://be23vbw8gdsax" path="res://Itens/32x32/Flecha.png" id="2_tkm8n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eycr7"]
+size = Vector2(19, 17)
+
+[node name="Flechas" type="Area2D" unique_id=1092598680]
+script = ExtResource("1_gxj4e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1900778700]
+position = Vector2(-5.5, -6.5)
+shape = SubResource("RectangleShape2D_eycr7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1291912776 groups=["Aja"]]
+position = Vector2(-5.5, -6.5)
+scale = Vector2(0.65625, 0.59375)
+texture = ExtResource("2_tkm8n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

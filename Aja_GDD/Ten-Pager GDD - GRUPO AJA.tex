@@ -1,0 +1,539 @@
+\documentclass[12pt, a4paper]{article} % Define o tipo de documento, tamanho base da fonte e formato do papel.
+
+% ==============================================================================
+% SISTEMA, IDIOMA E LOCALIZAÇÃO
+% ==============================================================================
+\usepackage[utf8]{inputenc}       % Permite digitar caracteres acentuados diretamente.
+\usepackage[T1]{fontenc}          % Garante hifenização correta e acentos copiáveis no PDF.
+\usepackage[brazilian]{babel}     % Traduz termos automáticos e aplica regras gramaticais do português.
+
+% ==============================================================================
+% LAYOUT, MARGENS E ESPAÇAMENTO
+% ==============================================================================
+\usepackage[margin=2.5cm]{geometry} % Configura o tamanho exato de todas as margens.
+\usepackage{setspace}               % Controle customizado de espaçamento entre linhas.
+\onehalfspacing                     % Espaçamento de 1,5 linhas em todo o documento.
+\usepackage{indentfirst}            % Força recuo na primeira linha do primeiro parágrafo.
+
+% ==============================================================================
+% TIPOGRAFIA E FONTES
+% ==============================================================================
+\usepackage{helvet}                 % Fonte Helvetica.
+\renewcommand{\familydefault}{\sfdefault} % Fonte sem serifa como principal.
+
+% ==============================================================================
+% FORMATAÇÃO DE TÍTULOS (SEÇÕES, SUBSEÇÕES, ETC.)
+% ==============================================================================
+\usepackage[explicit]{titlesec}     % Customiza visualmente os títulos das seções.
+
+% Títulos numerados (ex: 1 INTRODUÇÃO)
+\titleformat{\section}
+{\normalfont\normalsize\bfseries}{\thesection}{1em}{\MakeUppercase{#1}}
+
+% Títulos não numerados (ex: REFERÊNCIAS, ANEXOS)
+\titleformat{name=\section,numberless}
+{\normalfont\normalsize\bfseries\centering}{}{0pt}{\MakeUppercase{#1}}
+
+% Subtítulos nível 2 (ex: 1.1 Objetivos)
+\titleformat{\subsection}
+{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{#1}
+
+% Subtítulos nível 3 (ex: 1.1.1 Específicos)
+\titleformat{\subsubsection}
+{\normalfont\normalsize}{\thesubsubsection}{1em}{#1}
+
+% ==============================================================================
+% ELEMENTOS GRÁFICOS, TABELAS E COR
+% ==============================================================================
+\usepackage{graphicx}             
+\usepackage{float}                
+\usepackage{booktabs}             
+\usepackage{xcolor}               
+\usepackage{multirow}             
+\usepackage{amsmath}              
+\usepackage{subcaption}           % Essencial para as subfiguras do seu documento AJA
+
+% ==============================================================================
+% PROGRAMAÇÃO E LISTAGENS DE CÓDIGO
+% ==============================================================================
+\usepackage{listings}             
+\lstset{                          
+	basicstyle=\ttfamily\small,     
+	keywordstyle=\color{blue}\bfseries, 
+	commentstyle=\color[rgb]{0.1,0.5,0.1}, 
+	stringstyle=\color{red},        
+	showstringspaces=false,         
+	breaklines=true,                
+	frame=single,                   
+	numbers=left,                   
+	numberstyle=\scriptsize			
+}
+\renewcommand{\lstlistingname}{Listagem} 
+
+% ==============================================================================
+% SUMÁRIO CUSTOMIZADO (TOCLOFT)
+% ==============================================================================
+\usepackage[titles]{tocloft}      
+
+\addto\captionsbrazilian{         
+	\renewcommand{\contentsname}{SUMÁRIO}
+	\renewcommand{\refname}{REFERÊNCIAS}
+}
+
+\renewcommand{\cftsecdotsep}{\cftdotsep} 
+
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsecpagefont}{\bfseries}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\renewcommand{\cftsubsubsecfont}{\bfseries}
+\renewcommand{\cftsubsubsecpagefont}{\bfseries}
+
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{0pt}
+\setlength{\cftsubsubsecindent}{0pt}
+
+% ==============================================================================
+% CITAÇÕES, REFERÊNCIAS E AMBIENTES ESPECIAIS
+% ==============================================================================
+\usepackage[alf, abnt-emphasize=bf, abnt-etal-list=0]{abntex2cite} 
+
+\newenvironment{citacaodireta}{
+	\begin{list}{}{
+			\setlength{\leftmargin}{4cm} 
+			\setlength{\rightmargin}{0cm}
+			\setlength{\listparindent}{0cm}
+			\footnotesize                
+		}
+		\singlespacing               
+		\item[]
+	}{\end{list}}
+
+% ==============================================================================
+% LINKS E HIPERTEXTO
+% ==============================================================================
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\abntnextkey}{}
+\makeatother
+\usepackage[hidelinks]{hyperref} % hidelinks remove as bordas coloridas
+
+% ----------------------------------------------------------------
+
+\begin{document}
+	
+	% ----------------------------------------------------------------
+	% CAPA PADRONIZADA
+	% ----------------------------------------------------------------
+	
+	\begin{titlepage}
+		\begin{center}
+			\large
+			\noindent 
+			\begin{minipage}[c]{0.2\textwidth}
+				\includegraphics[width=2.4cm]{imagens/logo} % Mude para o caminho correto se necessário
+			\end{minipage}%
+			\begin{minipage}[c]{0.8\textwidth} 
+				\centering 
+				\fontsize{12}{14}\selectfont
+				\textbf{Universidade Federal de Itajubá - Campus Itabira} \\
+				\textbf{Engenharia da Computação}\\
+				\textbf{Introdução ao Desenvolvimento de Jogos Digitais}\\
+				\textbf{Prof. Dr. Wendell Fioravante da Silva Diniz}
+			\end{minipage}
+			
+			\vfill
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=0.4\textwidth]{imagens/Logo_aja}
+			\end{figure}
+			
+			\vspace{1cm}
+			
+			\Large
+			\textbf{RELATÓRIO DE DESENVOLVIMENTO AJA}\\
+			\fontsize{11}{14}\selectfont
+			\textbf{Documento de Design de Jogo (GDD)}
+			
+			\vfill
+			
+			\textbf{EQUIPE}\\
+			\vspace{0.5cm}
+			\begin{table}[H]
+				\centering
+				\begin{tabular}{ll}
+					\textbf{Esther de Faria} & \textbf{2023010039} \\
+					\textbf{Fabrício Rickelmer Souza Duarte} & \textbf{2023012884}\\
+					\textbf{Iago Rafael Santos Quaresma Lima} & \textbf{2023009870}\\
+					\textbf{Maria Fernanda Almeida Cunha Santos} & \textbf{2023012820}\\
+					\textbf{Nicole Cintia Alves Coelho} & \textbf{2023012543} \\
+				\end{tabular}
+			\end{table}
+			
+			\vfill
+			
+			\large
+			\textbf{Itabira}\\
+			\textbf{2026}
+		\end{center}
+	\end{titlepage}
+	
+	\newpage
+	\tableofcontents
+	\newpage
+	
+	\pagestyle{plain} 
+	
+	
+	% ----------------------------------------------------------------
+	% INÍCIO DO CONTEÚDO
+	% ----------------------------------------------------------------
+	
+	\section{Título e Identidade}
+	
+	\subsection{Título}
+	
+	Aja, o nome é um trocadilho com a palavra agir, ou seja, tome uma atitude 
+	
+	\subsection{Logotipo/Arte Conceitual}
+	
+	\begin{figure}[H]
+		\centering
+		
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{imagens/Logo_aja}
+			\caption{Logo do jogo}
+		\end{subfigure}
+		\hfill 
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{imagens/Mapa}
+			\caption{Conceito de Mapa}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{imagens/Esqueleto_agua}
+			\caption{Inimigo Esqueleto de Água}
+		\end{subfigure}
+		
+		\vspace{0.5cm}
+		
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{imagens/Esqueleto_floresta}
+			\caption{Inimigo Esqueleto da Floresta}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{imagens/Esqueleto_fogo}
+			\caption{Inimigo Esqueleto de Fogo}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{imagens/Esqueleto_gelo}
+			\caption{Inimigo Esqueleto de Gelo}
+		\end{subfigure}
+	\end{figure}
+	
+	\subsection{Informações Gerais}
+	
+	\begin{itemize}
+		\item Gênero: Ação e aventura. 
+		\item Público alvo: Crianças e Jovens acima de 10 anos. 
+		\item Plataforma principal: Computador
+	\end{itemize}
+	
+	\subsection{A "Frase de Gancho" (High Concept)}
+	
+	Um zelda com uma personagem feminina.
+	
+	\newpage
+	
+	%--------------------------------------------------------------
+	
+	\section{A História e o Mundo}
+	
+	Em um reino distante, em Nix, vive Aja, uma mulher de 20 anos que vive em uma pequena vila com seu irmão Hans. Aja e seu irmão perderam os pais muito cedo, seu pai dizia que sua mãe fugiu com o amante quando ela tinha apenas 8 anos, marcando-a para sempre.Não o bastante, diante de tal notícia seu pai se entristeceu demasiadamente, sempre chegando em casa embriagado até que, em certo dia apareceu morto pela vizinhança. As feridas ficaram, mas Aja e Hans fizeram um pacto para que nunca se separassem, porém a vida tinha outros planos…
+	
+	A sua vida estava tranquila, tinha um trabalho estável como uma das guardas na realeza, uma boa casa, comida na mesa e a companhia do seu irmão que tanto amava, mas sempre se perguntava se a vida era somente aquilo, como seria se estivesse menos sozinha no mundo…mal sabia ela, que aquele desejo estava na verdade mais perto do que ela tinha sonhado. Do outro lado da cidade, na zona dos cavalariços, vivia Protheus, um homem de 22 anos que perdeu a mãe durante o parto e foi criado pelo tio que sempre o desprezou, dizia que ele nunca deveria existir, que o seu nascimento era maldição dos Deuses, já que possuía poderes mágicos dos 4 elementos que só algumas pessoas do reino possuíam. Com o passar dos anos, sem saber o paradeiro do seu pai e diante de tal humilhação, seu coração obscureceu e em uns dos seus ataques de Fúria decidiu pegar caixas de lembranças antigas de sua mãe e as jogou pela parede. Em meio a diversos papéis, uma em especial se destacou, uma carta com um selo real. Nela, o rei dizia juras de amor para a mãe de Protheus, dizendo que nunca a abandonaria, mas que jamais cuidaria de uma criança bastarda. Diante de tal revelação e a partir de então, Protheus decidiu tomar o que é seu por direito, custe o que custar.
+	
+	Era a coroação do primogênito do rei, August, o reino estava em festa, magos de toda Nix  foram convocados para montar as suas apresentações mágicas. Água, Raio, Fogo e Gelo unidos para comemorar esse grande dia, nunca o reino esteve tão alegre, até que…em um único instante, trovoadas misturadas com bolas de fogo caíram do céu, as crianças pararam de brincar, os gritos tomaram conta, a cidade se tornou um verdadeiro caos, os guardas e Aja procuravam de onde surgiram aqueles ataques, mas não conseguiam enxergar com tamanha névoa. Segundos depois, um barulho, o corpo do antigo rei e de seu filho mortos no chão, e no trono apenas um homem, Protheus. Em meio a multidão, enquanto Aja procurava por seu irmão, Protheus jurou para a cidade que a partir de agora um novo rei existia em Nix e que todos deveriam obedecer às suas ordens, caso contrário, perecerão. Neste instante e com as falas de Protheus a sua mente, Aja viu caído e preso por um dos destroços seu irmão com marcas de sangue pelo corpo. Ao se aproximar, ela não acreditava, seu irmão não resistiu e agora estava só. Com raiva e em busca de vingança por seu irmão e sua cidade, tomou uma decisão: Ter a cabeça de Protheus em suas mãos. 
+	
+	\subsection{Cenário}
+	
+	O cenário é de um mundo de fantasia, em que teremos 4 grandes regiões, cada um contendo um dos 4 elementos e em seu centro o reino de Nix. 
+	
+	\subsection{Tom e Estilo}
+	
+	Como queremos uma época medieval e em 2d o jogo será colorido e cartunesco. 
+	
+	\newpage
+	
+	%--------------------------------------------------------------
+	
+	\section{Personagem (O 1º "C")}
+	
+	\subsection{Descrição da Personagem}
+	
+	Aja possui cabelos ondulados vermelhos, é mais protetora com os seus devido ao seu passado turbulento, mas não a menospreze, em um único ataque é capaz de deixar seu oponente no chão. Por ser filha do rei, possui os poderes da sua linhagem real, que somente alguns de Nix e a realeza possuem: Os 4 elementos.
+	
+	Sua história é amarga, perdeu os seus pais quando era jovem e agora o seu único irmão foi morto em um acidente causado por Protheus, o novo rei de Nix. Agora, ela busca vingança, usando seus poderes, ela decide sair pelas regiões do reino,  cada um pertencente a um único elemento… na espera que encontre Skar, o cajado elemental. Desde criança, ouvia em cantigas antigas a história de uma profecia de uma arma capaz de unir todos os poderes elementais e transformar o guerreiro no ser mais poderoso do reino. 
+	
+	\subsection{Progressão}
+	
+	Nossa personagem é capaz de usar os 4 poderes, mas de fato aprenderá a domá-los a cada passagem de região, e contará com o auxílio de algumas armas como granadas, espadas, arco e flecha, entre outras pelo caminho…ao passar completamente por cada região ganhará um dos pedaços da espada. Ao final, após juntar todas as peças, terá Skar e enfim poderá ter a sua luta final e recuperar a sua terra de volta.  
+	
+	\newpage    
+	
+	%--------------------------------------------------------------
+	
+	\section{Jogabilidade (Gameplay)}
+	
+	\subsection{Loop Principal}
+	
+	O jogador passa grande parte do tempo em explorações nas regiões elementais do mapa: gelo, fogo, raio e água.
+	Durante as explorações os monstros poderão deixar cair ao morrer moedas, poções de cura e mana, munições de flechas, entre outros itens que serão decididos ao decorrer do projeto.
+	Cada tipo de monstro terá um padrão de ataque e forma diferente, possuindo diferentes dificuldades dependendo do avanço da região.
+	Existiram monstros chefes que guardaram os castelos com itens únicos primordiais para derrotar o vilão principal do jogo, entretanto eles serão completamente diferentes de monstros comuns, possuindo padrões de ataques desafiadores e precisos que devem ser de difícil aprendizado para tornar o jogo mais complexo. 
+	Será possível utilizar as moedas para melhorar seus itens principais, comprar munição, mana e poções.
+	Ainda poderão ser feitos desafios que concederam conquistas e ao cumprir todas o jogador será premiado.
+	
+	\subsection{Mecânicas Únicas}
+	
+	O jogo poderá ter diferentes tipos de magia que serão usadas de forma criativa e moldarão o ambiente.
+	As magias poderão mudar conforme o uso do jogador e o seu estilo de gameplay.
+	
+	\subsection{Condições de Vitória/Derrota}
+	
+	Para ganhar o jogo será necessário derrotar o vilão final e livrar o mundo de sua corrupção.
+	
+	\newpage
+	
+	%--------------------------------------------------------------
+	
+	\section{Câmera e Controles (O 2º e 3º "C")}
+	
+	\subsection{Sistema de Câmera}
+	
+	O jogo será em terceira pessoa e terá uma câmera localizada na região superior. Em diferentes espaços ela poderá se aproximar ou distanciar do personagem principal dependendo do local e imersão.
+	
+	\subsection{Esquema de Controles}
+	
+	O jogo usará controles simples de movimentação podendo usar teclado ou controles.
+	O movimento no mapa será através do WASD/Analógico esquerdo. Itens poderam ser equipados pelo inventário e poderão ser colocados nos atalhos 1, 2, 3 do teclado numérico e B, X, Y do controle.  
+	O botão do espaço/A será usado para corrida e esquiva.
+	
+	\newpage
+	
+	%--------------------------------------------------------------
+	
+	\section{Inimigos e Desafios}
+	
+	\subsection{Hitbox (Caixa de Ataque)}
+	Defini o componente ofensivo do objeto como uma área invisível associada a um golpe, arma ou ao próprio corpo do inimigo. Essa zona determinou onde o ataque foi capaz de causar dano. No sistema que implementamos, a Hitbox procurou por uma área receptora para transmitir suas propriedades de dano através de sinais de colisão.
+	
+	\subsection{Hurtbox (Caixa de Dano)}
+	Estabeleci a zona vulnerável da entidade como o volume que definiu o espaço ocupado pelo corpo da personagem ou do monstro que pôde ser atingido. Ela não possuiu propriedades ofensivas; sua única função foi detectar a entrada de uma Hitbox e repassar essa informação para o sistema de saúde (Componente Vida).
+	
+	\subsection{Colisão de Objeto (Corpo Físico)}
+	Diferenciei as áreas de combate da colisão física real. Enquanto Hitboxes e Hurtboxes gerenciaram o combate, a colisão de objeto (geralmente um \textit{CollisionShape2D} no nó raiz) tratou das interações sólidas com o ambiente. Ela impediu que a personagem ou os monstros atravessassem paredes, árvores ou outros obstáculos do cenário.
+	
+	\subsection{Interação entre os Sistemas}
+	A lógica funcionou da seguinte forma:
+	\begin{itemize}
+		\item A Hitbox do atacante entrou em contato com a Hurtbox do defensor.
+		\item O motor de física detectou a sobreposição através das Layers e Masks pré-configuradas.
+		\item O sinal de colisão disparou o comando para reduzir os pontos de vida.
+		\item A Colisão de Objeto agiu simultaneamente para garantir que os corpos mantivessem suas propriedades sólidas e não ocupassem o mesmo espaço físico.
+	\end{itemize}
+	
+	
+	\subsection{Lógica do Projétil Universal}
+	O script \texttt{projetil.gd} foi desenvolvido para ser reaproveitável, utilizando uma variável booleana de facção:
+	\begin{itemize}
+		\item \textbf{Variável \texttt{e\_do\_inimigo}:} Se verdadeira, o projétil busca o nó \textit{Aja}; se falsa, busca corpos no grupo \textit{inimigos}.
+		\item \textbf{Movimentação:} Utiliza cálculo vetorial (\texttt{Vector2}) para manter uma trajetória linear constante após o disparo.
+	\end{itemize}
+	
+	\subsection{O Bestiário}
+	
+	Esqueleto: Um monstro simples e sem inteligência que busca apenas a ir atrás do jogador. Terá diferentes tipos de armas como o arco e espada que mudam o tipo de IA usada no monstro a partir da arma. É mais lento. Possui variações elementais a depender do ambiente em que está.
+	
+	Slime: Uma criatura gelatinosa e persistente que detecta a presença do jogador através de vibrações no solo. Diferente de outros monstros, ele não utiliza armas, baseando seu ataque puramente no contato físico e em investidas corporais. Possui uma velocidade moderada, mas compensa com uma movimentação imprevisível de "pulo e estalo". Apresenta variações elementais e de tamanho que alteram sua resistência e a área de dano do seu impacto. 
+	
+	\subsection{Inteligência Artificial do Esqueleto}
+	A IA do inimigo opera através de um ciclo de decisão baseado em tempo:
+	\begin{itemize}
+		\item \textbf{Temporização:} Um nó \textit{Timer} de 2 segundos dispara a função de ataque continuamente enquanto o inimigo estiver vivo.
+		\item \textbf{Cálculo de Direção:} Utiliza o método \texttt{normalized()} entre a posição global do Esqueleto e da Jogadora para garantir que o osso seja lançado com precisão na direção do alvo.
+	\end{itemize}
+	
+	\subsection{Resumo de Atributos de Combate}
+	\begin{table}[H]
+		\centering
+		\caption{Parâmetros de Combate Implementados}
+		\vspace{0.2cm}
+		\begin{tabular}{@{}llll@{}}
+			\toprule
+			\textbf{Entidade} & \textbf{Vida (HP)} & \textbf{Dano Causado} & \textbf{Mecânica de Morte} \\ \midrule
+			Aja (Jogadora)    & 20 (10 corações)   & 1 (Arco)       & \textit{Reload} da Cena    \\
+			Esqueleto         & 3                  & 2 (Osso)              & \textit{queue\_free()}     \\
+			Projétil          & -                  & Variável              & \textit{queue\_free()}     \\ \bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\subsection{Batalhas de Chefes}
+	
+	O jogo possuirá quatro castelos elementais e em cada um deles possuindo um chefe único e desafiador.
+	
+	\subsection{Obstáculos Não-Vivos}
+	
+	Alguns lugares precisam de roupas especiais para lidarem com temperaturas elevadas ou frios intensos.
+	As áreas antes dos castelos vão possuir vários caminhos e perigos variando conforme o elemento do local.
+	Cada castelo possuirá puzzles de complexidade média por causa da faixa etária alvo para darem acessos a itens básicos, únicos e chefes.
+	
+	\newpage
+	
+	%--------------------------------------------------------------
+	
+	\section{Design de Níveis (The Mission)}
+	
+	\subsection{Estrutura}
+	
+	O jogo terá uma estrutura de exploração semiaberta. O jogador poderá explorar o mapa principal livremente, porém algumas regiões só poderão ser acessadas conforme o progresso da história e a obtenção de novos poderes elementais.
+	Cada região elemental terá seus próprios desafios, inimigos e castelos, que servirão como objetivos principais da missão. Conforme o jogador avança, novas áreas do mapa serão desbloqueadas, incentivando a exploração e o retorno a locais já visitados.
+	
+	\subsection{Exemplo de Nível}
+	
+	O primeiro nível começa nos arredores do reino de Nix, onde Aja inicia sua jornada em busca de respostas e vingança. O jogador aprende os controles básicos de movimentação, combate e uso de habilidades elementais.
+	Durante a exploração, o jogador enfrenta inimigos mais simples, como esqueletos, e encontra pequenos desafios ambientais que introduzem as mecânicas do jogo. Ao final da área, o jogador encontra um mini desafio que testa o uso das habilidades aprendidas e libera acesso para a próxima região elemental.
+	
+	\subsection{Estética dos Níveis}
+	
+	Cada região do jogo terá uma identidade visual própria baseada nos quatro elementos. A região de gelo terá paisagens frias com neve e estruturas congeladas, enquanto a região de fogo terá ambientes vulcânicos e iluminados por lava.
+	Já a região de raio terá um clima mais tempestuoso e misterioso, com efeitos de eletricidade no cenário. A região de água contará com rios, cavernas úmidas e áreas inundadas. Conforme o jogador avança, os ambientes se tornam mais complexos e visualmente intensos, mostrando a influência crescente do vilão sobre o mundo.
+	
+	\newpage
+	
+	%--------------------------------------------------------------
+	
+	\section{Interface (HUD) e Som}
+	
+	\subsection{HUD}
+	
+	Na tela principal do jogo o jogador poderá visualizar a barra de vida, barra de mana e o mapa da região atual. Também será possível ver os itens equipados nos atalhos rápidos e a quantidade de moedas coletadas durante a exploração.
+	
+	O HUD será simples e organizado para não atrapalhar a visão do jogador durante o combate e a exploração. Possui uma barra de vida com corações, um mostrador de moedas, um atalho para itens, mapa e inventário.
+	
+	\begin{figure}[H]
+		\centering
+		
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{imagens/Coracao_cheio}
+			\caption{Ícone de Coração Cheio}
+		\end{subfigure}
+		\hfill 
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{imagens/Coracao_metade}
+			\caption{Ícone de Coração Metade}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{imagens/Coracao_vazio}
+			\caption{Ícone de Coração Vazio}
+		\end{subfigure}
+		
+		\vspace{0.5cm}
+		
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{imagens/Icone_moeda}
+			\caption{Ícone de Moeda}
+		\end{subfigure}
+		\hfill 
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{imagens/Icone_mapa}
+			\caption{Ícone de Mapa}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{imagens/Icone_invertario}
+			\caption{Ícone de Inventário}
+		\end{subfigure}
+	\end{figure}
+	
+	\subsection{Efeitos Sonoros (SFX)}
+	
+	Os efeitos sonoros terão um papel importante para indicar as ações do jogador e dos inimigos. Ataques, uso de magia, coleta de itens e golpes recebidos terão sons específicos que ajudam o jogador a entender o que está acontecendo no combate.
+	
+	Além disso, os sons também ajudarão na imersão do mundo, como passos no ambiente, barulhos de magia e efeitos dos elementos presentes em cada região.
+	
+	\subsection{Trilha Sonora}
+	
+	A trilha sonora do jogo será inspirada em músicas de fantasia medieval, acompanhando o clima de aventura do mundo de Nix. Durante momentos de exploração a música será mais calma e misteriosa, incentivando o jogador a explorar o ambiente.
+	
+	Já nas batalhas contra inimigos e chefes, a música se tornará mais intensa e dinâmica, aumentando a sensação de desafio e ação durante o combate.
+	
+	\newpage
+	
+	%--------------------------------------------------------------
+	
+	\section{Monetização e Replay}
+	
+	\subsection{Modelo de Negócio}
+	
+	O jogo adotará o modelo Free-to-Play (Gratuito para Jogar).
+	Sendo um projeto focado em PC , o formato gratuito permite que o maior número possível de jogadores conheça o universo de Nix e seus 4 reinos.
+	Este modelo facilita a criação de uma comunidade ativa desde o lançamento, permitindo que futuras atualizações ou cosméticos sejam introduzidos conforme o interesse do público.
+	
+	\subsection{Fator Replay}
+	
+	A experiência do jogador em Aja não termina após a primeira jornada. Veja por que ele voltará a jogar:
+	O sistema de conquistas é focado na coleta de todos os itens indispensáveis e na derrota dos chefões que guardam os castelos. 
+	Após derrotar o vilão final e livrar o mundo da corrupção, novos desafios de alta dificuldade serão liberados. Isso exigirá que o jogador masterize suas habilidades elementais para enfrentar versões mais poderosas das forças da natureza.
+	Como as magias mudam conforme o uso e o estilo do jogador, e a história contém um grande plot twist, os jogadores sentirão vontade de jogar novamente para experimentar novas combinações de habilidades e descobrir detalhes escondidos no enredo.
+	
+	\newpage
+	
+	%--------------------------------------------------------------
+	
+	\section{Cronograma e Riscos}
+	
+	\subsection{Equipe Necessária}
+	
+	\begin{itemize}
+		
+		\item Programadores (2): Focados na lógica de combate, sistema de gerenciamento de recursos e interação entre itens.
+		
+		\item Artistas de Pixel Art (2): Responsáveis por criar toda a arte original dos 4 reinos elementais e do castelo central.
+		
+		\item Game Designer/Roteirista (1): Focado no balanceamento dos desafios mágicos e no desenvolvimento do backstory e do plot twist.
+		
+	\end{itemize}
+	
+	Nota: Todos os 5 integrantes possuem conhecimento técnico e atuarão na implementação do código.
+	
+	\subsection{Tecnologia}
+	
+	Motor: Godot Engine.
+	Escolhido por ser o motor mais leve para rodar em PC, ideal para garantir o desempenho em hardware de entrada. Sua facilidade com 2D e o uso de GDScript favorecem a colaboração de toda a equipe na programação.
+	
+	\subsection{Maiores Riscos}
+	
+	Mecânicas de Magia Ambiental: A implementação da mecânica de "moldar o ambiente" com magias exige um nível de polimento técnico que pode ser complexo.
+	
+	Balanceamento de Progressão Elemental: O jogo possui 4 regiões elementais (Gelo, Fogo, Raio e Água) que exigem roupas especiais e itens específicos para lidar com temperaturas e perigos. O risco técnico é equilibrar a dificuldade dessas áreas para que o jogador não fique "travado" por não ter o item correto cedo demais.
+	
+	Sistema de Câmera em Espaços Fechados: Como o jogo alterna entre exploração de mundo aberto e castelos, a câmera superior que se aproxima ou distancia precisa ser muito precisa para não obstruir a visão do jogador em corredores estreitos dos castelos.
+	
+\end{document}
