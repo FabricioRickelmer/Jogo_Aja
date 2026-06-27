@@ -4,12 +4,15 @@ const VELOCIDADE = 300.0
 enum Estados {NORMAL, ATACANDO, ATIRANDO}
 var estado_atual = Estados.NORMAL
 
-# Variável atualizada para controlar o nome da animação ao invés de números soltos
+# Variável para controlar o nome da animação ao invés de números soltos
 var animacao_direcao = "andar_baixo" 
 var direcao_disparo = Vector2.DOWN
 
-# Nova variável para lembrar onde o jogo começou
+# Variável para lembrar onde o jogo começou
 var posicao_inicial: Vector2
+
+# Variáveis do Tutorial
+var tutorial_cura_visto: bool = false
 
 @onready var som_passos = $SomPassos
 @onready var sprite = $AnimatedSprite2D
@@ -17,6 +20,7 @@ var posicao_inicial: Vector2
 @export var textura_flecha = preload("res://Combate/Projetil.png")
 @onready var cena_flecha = preload("res://Testes/Projetil.tscn")
 @onready var som_cura = $SomCura
+@onready var caixa_tutorial = $CaixaTutorial
 
 func _ready() -> void:
 	# Grava a coordenada exata em que a Aja nasceu no mapa
@@ -129,3 +133,15 @@ func _on_componente_vida_morreu() -> void:
 	# 3. Emite o sinal de que a vida mudou (Isso avisa a barrinha/corações 
 	# da interface na tela que ela voltou a ficar cheia)
 	vida.vida_mudou.emit(vida.vida_atual)
+
+
+func _on_componente_vida_vida_mudou(vida_atual: Variant) -> void:
+	# Verifica se a vida diminuiu E se o tutorial ainda não foi mostrado
+	if vida_atual < health_comp.vida_maxima and not tutorial_cura_visto:
+		
+		tutorial_cura_visto = true # Marca que já viu para não repetir
+		caixa_tutorial.visible = true # Mostra a caixa de texto na tela
+		
+		# Cria um cronômetro invisível que espera 4 segundos e esconde a caixa de novo
+		await get_tree().create_timer(4.0).timeout
+		caixa_tutorial.visible = false
