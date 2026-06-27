@@ -16,6 +16,7 @@ var posicao_inicial: Vector2
 @onready var health_comp = $Componente_Vida
 @export var textura_flecha = preload("res://Combate/Projetil.png")
 @onready var cena_flecha = preload("res://Testes/Projetil.tscn")
+@onready var som_cura = $SomCura
 
 func _ready() -> void:
 	# Grava a coordenada exata em que a Aja nasceu no mapa
@@ -26,6 +27,7 @@ func _physics_process(_delta: float) -> void:
 		Estados.NORMAL:
 			processar_movimento()
 			checar_ataque()
+			checar_cura()
 		Estados.ATACANDO, Estados.ATIRANDO:
 			velocity = Vector2.ZERO
 	move_and_slide()
@@ -96,6 +98,24 @@ func atirar_arco():
 	
 	await get_tree().create_timer(0.4).timeout
 	estado_atual = Estados.NORMAL
+
+func checar_cura():
+	if Input.is_action_just_pressed("usar_pocao"):
+		# 1. Verifica se tem poção na mochila E se a vida precisa ser curada
+		if Global.pocao > 0 and health_comp.vida_atual < health_comp.vida_maxima:
+			
+			# 2. Gasta uma poção do inventário
+			Global.pocao -= 1 
+			
+			# 3. Cura os 3 pontos (que equivalem a 1,5 corações)
+			health_comp.curar(3) 
+			som_cura.play()
+			
+			print("Curou! Poções restantes: ", Global.pocao)
+		elif Global.pocao <= 0:
+			print("Sem poções no inventário!")
+		else:
+			print("A vida já está cheia!")
 
 # Nova função que roda assim que o Componente_Vida zera e emite o sinal "morreu"
 func _on_componente_vida_morreu() -> void:

@@ -18,3 +18,10 @@ func receber_dano(quantidade: int):
 	
 	if vida_atual <= 0:
 		morreu.emit()
+		
+func curar(quantidade: int):
+	# Só cura se a vida não estiver cheia
+	if vida_atual < vida_maxima:
+		# O clampi garante que a vida não passe do limite máximo
+		vida_atual = clampi(vida_atual + quantidade, 0, vida_maxima)
+		vida_mudou.emit(vida_atual)		

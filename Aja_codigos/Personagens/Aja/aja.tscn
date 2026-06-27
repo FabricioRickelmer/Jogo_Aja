@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://8nhwwn8sco5y" path="res://Audio/Efeitos/hurt2.wav" id="5_gnjd4"]
 [ext_resource type="Script" uid="uid://c3lfoe175q17s" path="res://Combate/Componente_Hurtbox.gd" id="6_6d3rh"]
 [ext_resource type="AudioStream" uid="uid://cpjaogcv0cpji" path="res://Audio/Efeitos/footstepsOnStone.wav" id="7_jnkyo"]
+[ext_resource type="AudioStream" uid="uid://48eo5sj0xoma" path="res://Audio/healing.wav" id="8_fdtgw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdtgw"]
 atlas = ExtResource("2_l2pr0")
@@ -249,5 +250,8 @@ shape = SubResource("CapsuleShape2D_4p74y")
 
 [node name="SomPassos" type="AudioStreamPlayer2D" parent="." unique_id=294610930]
 stream = ExtResource("7_jnkyo")
+
+[node name="SomCura" type="AudioStreamPlayer2D" parent="." unique_id=408882838]
+stream = ExtResource("8_fdtgw")
 
 [connection signal="morreu" from="Componente_Vida" to="." method="_on_componente_vida_morreu"]
