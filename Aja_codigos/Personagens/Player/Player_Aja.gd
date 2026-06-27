@@ -21,6 +21,8 @@ var tutorial_cura_visto: bool = false
 @onready var cena_flecha = preload("res://Testes/Projetil.tscn")
 @onready var som_cura = $SomCura
 @onready var caixa_tutorial = $CaixaTutorial
+@onready var anim_player = $AnimationPlayer
+@onready var pivot_arma = $Pivot_Arma
 
 func _ready() -> void:
 	# Grava a coordenada exata em que a Aja nasceu no mapa
@@ -71,9 +73,31 @@ func atualizar_animacao_por_direcao(dir: Vector2):
 			direcao_disparo = Vector2.UP
 
 func checar_ataque():
-	if Input.is_action_just_pressed("ataque_arco"):
-		atirar_arco()
+	# Se apertou 1 e se tem a espada no inventário para Equipar/Desequipar
+	if Input.is_action_just_pressed("equipar_espada") and Global.tem_espada:
+		# Isso inverte a visibilidade: se está ligada, desliga. Se está desligada, liga.
+		pivot_arma.visible = not pivot_arma.visible 
+		
+	# Só ataca se apertar o botão E se a arma estiver VISÍVEL na mão dela
+	if Input.is_action_just_pressed("ataque_espada") and pivot_arma.visible:
+		atacar_espada()
 
+
+func atacar_espada():
+	estado_atual = Estados.ATACANDO
+	
+	# Ajusta a direção da arma para onde ela está olhando
+	pivot_arma.rotation = direcao_disparo.angle()
+	
+	anim_player.play("golpe_espada")
+	
+	await anim_player.animation_finished
+	
+	# Apenas resetamos a rotação no final, NÃO deixamos invisível mais!
+	pivot_arma.rotation = 0 
+	estado_atual = Estados.NORMAL
+	
+	
 func atirar_arco():
 	if not cena_flecha: return
 	
