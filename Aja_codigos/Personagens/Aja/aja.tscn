@@ -213,6 +213,9 @@ height = 34.0
 radius = 9.0
 height = 34.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_fdtgw"]
+font_size = 10
+
 [node name="Aja" type="CharacterBody2D" unique_id=1666150687 groups=["Aja"]]
 script = ExtResource("1_l2pr0")
 
@@ -260,8 +263,8 @@ offset_left = -121.0
 offset_top = -34.0
 offset_right = 284.0
 offset_bottom = -11.0
-scale = Vector2(0.6, 0.6)
 text = "Você está ferida! Pressione [C] para usar uma poção."
+label_settings = SubResource("LabelSettings_fdtgw")
 
 [connection signal="morreu" from="Componente_Vida" to="." method="_on_componente_vida_morreu"]
 [connection signal="vida_mudou" from="Componente_Vida" to="." method="_on_componente_vida_vida_mudou"]
