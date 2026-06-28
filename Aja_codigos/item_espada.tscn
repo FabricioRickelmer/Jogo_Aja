@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dxyxgdc40xgr6"]
+
+[ext_resource type="Script" uid="uid://c2vedx3nkdfwl" path="res://item_espada.gd" id="1_nt3yu"]
+[ext_resource type="Texture2D" uid="uid://c7ad72njj077v" path="res://Itens/32x32/Arma.png" id="2_6sf4h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nt3yu"]
+size = Vector2(16, 16)
+
+[node name="ItemEspada" type="Area2D" unique_id=1812778312]
+script = ExtResource("1_nt3yu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1333582018]
+position = Vector2(0, -0.99999994)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_6sf4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1791237760]
+position = Vector2(6, -7)
+shape = SubResource("RectangleShape2D_nt3yu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

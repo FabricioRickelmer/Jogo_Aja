@@ -4,12 +4,15 @@ const VELOCIDADE = 300.0
 enum Estados {NORMAL, ATACANDO, ATIRANDO}
 var estado_atual = Estados.NORMAL
 
-# Variável atualizada para controlar o nome da animação ao invés de números soltos
+# Variável para controlar o nome da animação ao invés de números soltos
 var animacao_direcao = "andar_baixo" 
 var direcao_disparo = Vector2.DOWN
 
-# Nova variável para lembrar onde o jogo começou
+# Variável para lembrar onde o jogo começou
 var posicao_inicial: Vector2
+
+# Variáveis do Tutorial
+var tutorial_cura_visto: bool = false
 
 @onready var som_passos = $SomPassos
 @onready var sprite = $AnimatedSprite2D
@@ -17,6 +20,9 @@ var posicao_inicial: Vector2
 @export var textura_flecha = preload("res://Combate/Projetil.png")
 @onready var cena_flecha = preload("res://Testes/Projetil.tscn")
 @onready var som_cura = $SomCura
+@onready var caixa_tutorial = $CaixaTutorial
+@onready var anim_player = $AnimationPlayer
+@onready var pivot_arma = $Pivot_Arma
 
 func _ready() -> void:
 	# Grava a coordenada exata em que a Aja nasceu no mapa
@@ -67,9 +73,31 @@ func atualizar_animacao_por_direcao(dir: Vector2):
 			direcao_disparo = Vector2.UP
 
 func checar_ataque():
-	if Input.is_action_just_pressed("ataque_arco"):
-		atirar_arco()
+	# Se apertou 1 e se tem a espada no inventário para Equipar/Desequipar
+	if Input.is_action_just_pressed("equipar_espada") and Global.tem_espada:
+		# Isso inverte a visibilidade: se está ligada, desliga. Se está desligada, liga.
+		pivot_arma.visible = not pivot_arma.visible 
+		
+	# Só ataca se apertar o botão E se a arma estiver VISÍVEL na mão dela
+	if Input.is_action_just_pressed("ataque_espada") and pivot_arma.visible:
+		atacar_espada()
 
+
+func atacar_espada():
+	estado_atual = Estados.ATACANDO
+	
+	# Ajusta a direção da arma para onde ela está olhando
+	pivot_arma.rotation = direcao_disparo.angle()
+	
+	anim_player.play("golpe_espada")
+	
+	await anim_player.animation_finished
+	
+	# Apenas resetamos a rotação no final, NÃO deixamos invisível mais!
+	pivot_arma.rotation = 0 
+	estado_atual = Estados.NORMAL
+	
+	
 func atirar_arco():
 	if not cena_flecha: return
 	
@@ -129,3 +157,15 @@ func _on_componente_vida_morreu() -> void:
 	# 3. Emite o sinal de que a vida mudou (Isso avisa a barrinha/corações 
 	# da interface na tela que ela voltou a ficar cheia)
 	vida.vida_mudou.emit(vida.vida_atual)
+
+
+func _on_componente_vida_vida_mudou(vida_atual: Variant) -> void:
+	# Verifica se a vida diminuiu E se o tutorial ainda não foi mostrado
+	if vida_atual < health_comp.vida_maxima and not tutorial_cura_visto:
+		
+		tutorial_cura_visto = true # Marca que já viu para não repetir
+		caixa_tutorial.visible = true # Mostra a caixa de texto na tela
+		
+		# Cria um cronômetro invisível que espera 4 segundos e esconde a caixa de novo
+		await get_tree().create_timer(4.0).timeout
+		caixa_tutorial.visible = false

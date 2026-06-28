@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://c3lfoe175q17s" path="res://Combate/Componente_Hurtbox.gd" id="6_6d3rh"]
 [ext_resource type="AudioStream" uid="uid://cpjaogcv0cpji" path="res://Audio/Efeitos/footstepsOnStone.wav" id="7_jnkyo"]
 [ext_resource type="AudioStream" uid="uid://48eo5sj0xoma" path="res://Audio/healing.wav" id="8_fdtgw"]
+[ext_resource type="Texture2D" uid="uid://c7ad72njj077v" path="res://Itens/32x32/Arma.png" id="9_t03x7"]
+[ext_resource type="Script" uid="uid://cceedd5avp8oq" path="res://Personagens/Aja/hitbox_espada.gd" id="10_8gkur"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdtgw"]
 atlas = ExtResource("2_l2pr0")
@@ -213,6 +215,73 @@ height = 34.0
 radius = 9.0
 height = 34.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_fdtgw"]
+font_size = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t03x7"]
+size = Vector2(16, 15)
+
+[sub_resource type="Animation" id="Animation_t03x7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot_Arma:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot_Arma/Hitbox_Espada/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8gkur"]
+resource_name = "golpe_espada"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot_Arma:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.5462881, -0.1823869, 0.18151425]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot_Arma/Hitbox_Espada/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gnjd4"]
+_data = {
+&"RESET": SubResource("Animation_t03x7"),
+&"golpe_espada": SubResource("Animation_8gkur")
+}
+
 [node name="Aja" type="CharacterBody2D" unique_id=1666150687 groups=["Aja"]]
 script = ExtResource("1_l2pr0")
 
@@ -254,4 +323,40 @@ stream = ExtResource("7_jnkyo")
 [node name="SomCura" type="AudioStreamPlayer2D" parent="." unique_id=408882838]
 stream = ExtResource("8_fdtgw")
 
+[node name="CaixaTutorial" type="Label" parent="." unique_id=766717994]
+visible = false
+offset_left = -121.0
+offset_top = -34.0
+offset_right = 284.0
+offset_bottom = -11.0
+text = "Você está ferida! Pressione [C] para usar uma poção."
+label_settings = SubResource("LabelSettings_fdtgw")
+
+[node name="Pivot_Arma" type="Node2D" parent="." unique_id=1148169088]
+visible = false
+position = Vector2(8, 33)
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot_Arma" unique_id=1469099644]
+position = Vector2(0, -0.99999994)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_t03x7")
+offset = Vector2(13, -10)
+
+[node name="Hitbox_Espada" type="Area2D" parent="Pivot_Arma" unique_id=1228933395]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("10_8gkur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot_Arma/Hitbox_Espada" unique_id=287804301]
+visible = false
+position = Vector2(12, -11)
+shape = SubResource("RectangleShape2D_t03x7")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2009751273]
+libraries/ = SubResource("AnimationLibrary_gnjd4")
+
 [connection signal="morreu" from="Componente_Vida" to="." method="_on_componente_vida_morreu"]
+[connection signal="vida_mudou" from="Componente_Vida" to="." method="_on_componente_vida_vida_mudou"]
+[connection signal="area_entered" from="Pivot_Arma/Hitbox_Espada" to="Pivot_Arma/Hitbox_Espada" method="_on_area_entered"]
+[connection signal="body_entered" from="Pivot_Arma/Hitbox_Espada" to="Pivot_Arma/Hitbox_Espada" method="_on_body_entered"]
