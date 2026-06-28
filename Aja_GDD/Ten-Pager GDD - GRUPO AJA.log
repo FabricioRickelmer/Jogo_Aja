@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.2)  4 JUN 2026 18:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.2)  27 JUN 2026 23:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -719,39 +719,40 @@ Underfull \hbox (badness 5652) in paragraph at lines 239--239
 resta.png> <./imagens/Esqueleto_fogo.png> <./imagens/Esqueleto_gelo.png>]
 [4] [5] [6] [7] [8]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 344.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 336.
+ [9]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 359.
- [9] [10] [11] [12]
-<imagens/Coracao_cheio.png, id=300, 64.24pt x 64.24pt>
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 386.
+ [10] [11] [12]
+<imagens/Coracao_cheio.png, id=308, 64.24pt x 64.24pt>
 File: imagens/Coracao_cheio.png Graphic file (type png)
 <use imagens/Coracao_cheio.png>
-Package pdftex.def Info: imagens/Coracao_cheio.png  used on input line 438.
+Package pdftex.def Info: imagens/Coracao_cheio.png  used on input line 465.
 (pdftex.def)             Requested size: 136.57462pt x 136.5861pt.
-<imagens/Coracao_metade.png, id=301, 64.24pt x 64.24pt>
+<imagens/Coracao_metade.png, id=309, 64.24pt x 64.24pt>
 File: imagens/Coracao_metade.png Graphic file (type png)
 <use imagens/Coracao_metade.png>
-Package pdftex.def Info: imagens/Coracao_metade.png  used on input line 444.
+Package pdftex.def Info: imagens/Coracao_metade.png  used on input line 471.
 (pdftex.def)             Requested size: 136.57462pt x 136.5861pt.
-<imagens/Coracao_vazio.png, id=302, 64.24pt x 64.24pt>
+<imagens/Coracao_vazio.png, id=310, 64.24pt x 64.24pt>
 File: imagens/Coracao_vazio.png Graphic file (type png)
 <use imagens/Coracao_vazio.png>
-Package pdftex.def Info: imagens/Coracao_vazio.png  used on input line 450.
+Package pdftex.def Info: imagens/Coracao_vazio.png  used on input line 477.
 (pdftex.def)             Requested size: 136.57462pt x 136.5861pt.
-<imagens/Icone_moeda.png, id=303, 64.24pt x 64.24pt>
+<imagens/Icone_moeda.png, id=311, 64.24pt x 64.24pt>
 File: imagens/Icone_moeda.png Graphic file (type png)
 <use imagens/Icone_moeda.png>
-Package pdftex.def Info: imagens/Icone_moeda.png  used on input line 458.
+Package pdftex.def Info: imagens/Icone_moeda.png  used on input line 485.
 (pdftex.def)             Requested size: 136.57462pt x 136.5861pt.
-<imagens/Icone_mapa.png, id=304, 64.24pt x 64.24pt>
+<imagens/Icone_mapa.png, id=312, 64.24pt x 64.24pt>
 File: imagens/Icone_mapa.png Graphic file (type png)
 <use imagens/Icone_mapa.png>
-Package pdftex.def Info: imagens/Icone_mapa.png  used on input line 464.
+Package pdftex.def Info: imagens/Icone_mapa.png  used on input line 491.
 (pdftex.def)             Requested size: 136.57462pt x 136.5861pt.
-<imagens/Icone_invertario.png, id=305, 64.24pt x 64.24pt>
+<imagens/Icone_invertario.png, id=313, 64.24pt x 64.24pt>
 File: imagens/Icone_invertario.png Graphic file (type png)
 <use imagens/Icone_invertario.png>
-Package pdftex.def Info: imagens/Icone_invertario.png  used on input line 470.
+Package pdftex.def Info: imagens/Icone_invertario.png  used on input line 497.
 (pdftex.def)             Requested size: 136.57462pt x 136.5861pt.
  [13 <./imagens/Coracao_cheio.png> <./imagens/Coracao_metade.png> <./imagens/Co
 racao_vazio.png> <./imagens/Icone_moeda.png> <./imagens/Icone_mapa.png> <./imag
@@ -761,26 +762,77 @@ ens/Icone_invertario.png>] [14] [15]
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-04-28>
  ***********
-Package rerunfilecheck Info: File `"Ten-Pager GDD - GRUPO AJA".out' has not cha
-nged.
-(rerunfilecheck)             Checksum: BC8D298FE7849629396E603B34581A6E;7113.
+
+
+Package rerunfilecheck Warning: File `"Ten-Pager GDD - GRUPO AJA".out' has chan
+ged.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `"Ten-Pager GDD - GRUPO AJA".out':
+(rerunfilecheck)             Before: BC8D298FE7849629396E603B34581A6E;7113
+(rerunfilecheck)             After:  A5C8B8FB4F230C875111A4A4F485BD02;7770.
  ) 
 Here is how much of TeX's memory you used:
- 15978 strings out of 467683
- 258756 string characters out of 5414722
+ 15997 strings out of 467683
+ 258445 string characters out of 5414722
  693406 words of memory out of 5000000
- 44761 multiletter control sequences out of 15000+600000
+ 44765 multiletter control sequences out of 15000+600000
  659121 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,105p,1325b,615s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\fabri\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
-1200.pk><C:/Users/fabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/
-uhvb8a.pfb><C:/Users/fabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvet
-ic/uhvr8a.pfb><C:/Users/fabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/hel
-vetic/uhvro8a.pfb>
-Output written on "Ten-Pager GDD - GRUPO AJA.pdf" (17 pages, 369939 bytes).
+
+pdfTeX warning (dest): name{subsection.7.3} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.10} has been referenced but does not e
+xist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.9} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.8} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.7} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.6} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.5} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.4} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.3} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.2} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.6.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+ <C:\Users\fabri\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt12
+00.pk><C:/Users/fabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uh
+vb8a.pfb><C:/Users/fabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic
+/uhvr8a.pfb><C:/Users/fabri/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helve
+tic/uhvro8a.pfb>
+Output written on "Ten-Pager GDD - GRUPO AJA.pdf" (17 pages, 376405 bytes).
 PDF statistics:
- 384 PDF objects out of 1000 (max. 8388607)
- 66 named destinations out of 1000 (max. 500000)
+ 411 PDF objects out of 1000 (max. 8388607)
+ 81 named destinations out of 1000 (max. 500000)
  418 words of extra memory for PDF output out of 10000 (max. 10000000)
 

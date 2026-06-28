@@ -17,29 +17,33 @@
 \contentsline {section}{\numberline {5}Câmera e Controles (O 2º e 3º "C")}{8}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Sistema de Câmera}{8}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Esquema de Controles}{8}{subsection.5.2}%
-\contentsline {section}{\numberline {6}Inimigos e Desafios}{9}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Hitbox (Caixa de Ataque)}{9}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Hurtbox (Caixa de Dano)}{9}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Colisão de Objeto (Corpo Físico)}{9}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Interação entre os Sistemas}{9}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Lógica do Projétil Universal}{9}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}O Bestiário}{10}{subsection.6.6}%
-\contentsline {subsection}{\numberline {6.7}Inteligência Artificial do Esqueleto}{10}{subsection.6.7}%
-\contentsline {subsection}{\numberline {6.8}Resumo de Atributos de Combate}{10}{subsection.6.8}%
-\contentsline {subsection}{\numberline {6.9}Batalhas de Chefes}{10}{subsection.6.9}%
-\contentsline {subsection}{\numberline {6.10}Obstáculos Não-Vivos}{11}{subsection.6.10}%
-\contentsline {section}{\numberline {7}Design de Níveis (The Mission)}{12}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Estrutura}{12}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Exemplo de Nível}{12}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Estética dos Níveis}{12}{subsection.7.3}%
-\contentsline {section}{\numberline {8}Interface (HUD) e Som}{13}{section.8}%
-\contentsline {subsection}{\numberline {8.1}HUD}{13}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Efeitos Sonoros (SFX)}{13}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Trilha Sonora}{14}{subsection.8.3}%
-\contentsline {section}{\numberline {9}Monetização e Replay}{15}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Modelo de Negócio}{15}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Fator Replay}{15}{subsection.9.2}%
-\contentsline {section}{\numberline {10}Cronograma e Riscos}{16}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Equipe Necessária}{16}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Tecnologia}{16}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Maiores Riscos}{16}{subsection.10.3}%
+\contentsline {section}{\numberline {6}Mecânica de Combate}{9}{section.6}%
+\contentsline {section}{\numberline {7}Sistema de Cura e Feedback Sonoro}{9}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Lógica de Cura}{9}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Feedback Sonoro}{9}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Inimigos e Desafios}{9}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Hitbox (Caixa de Ataque)}{9}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Hurtbox (Caixa de Dano)}{10}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Colisão de Objeto (Corpo Físico)}{10}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Interação entre os Sistemas}{10}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Lógica do Projétil Universal}{10}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}O Bestiário}{10}{subsection.8.6}%
+\contentsline {subsection}{\numberline {8.7}Inteligência Artificial do Esqueleto}{11}{subsection.8.7}%
+\contentsline {subsection}{\numberline {8.8}Resumo de Atributos de Combate}{11}{subsection.8.8}%
+\contentsline {subsection}{\numberline {8.9}Batalhas de Chefes}{11}{subsection.8.9}%
+\contentsline {subsection}{\numberline {8.10}Obstáculos Não-Vivos}{11}{subsection.8.10}%
+\contentsline {section}{\numberline {9}Design de Níveis (The Mission)}{12}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Estrutura}{12}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Exemplo de Nível}{12}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Estética dos Níveis}{12}{subsection.9.3}%
+\contentsline {section}{\numberline {10}Interface (HUD) e Som}{13}{section.10}%
+\contentsline {subsection}{\numberline {10.1}HUD}{13}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Efeitos Sonoros (SFX)}{13}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Trilha Sonora}{14}{subsection.10.3}%
+\contentsline {section}{\numberline {11}Monetização e Replay}{15}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Modelo de Negócio}{15}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Fator Replay}{15}{subsection.11.2}%
+\contentsline {section}{\numberline {12}Cronograma e Riscos}{16}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Equipe Necessária}{16}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Tecnologia}{16}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Maiores Riscos}{16}{subsection.12.3}%

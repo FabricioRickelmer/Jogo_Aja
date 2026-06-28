@@ -332,6 +332,33 @@
 	
 	%--------------------------------------------------------------
 	
+	\section{Mecânica de Combate}
+	O sistema de combate foi construído sobre uma arquitetura de \textit{Hitboxes} e \textit{Hurtboxes}, garantindo um fluxo preciso de dano:
+	
+	\begin{itemize}
+		\item \textbf{Hitbox (Ataque):} Implementada através de uma área de colisão vinculada à espada, controlada via \textit{AnimationPlayer}. A ativação do dano ocorre apenas durante o \textit{frame} de ataque, evitando dano passivo.
+		\item \textbf{Hurtbox (Inimigo):} O componente \textit{HurtboxComponent} valida a colisão com objetos da classe \textit{HitboxComponent}, processando o dano recebido e verificando condições de destruição do objeto ao atingir zero de vida.
+	\end{itemize}
+	
+	\section{Sistema de Cura e Feedback Sonoro}
+	A mecânica de cura foi integrada ao \textit{HealthComponent} do jogador, permitindo a recuperação controlada de pontos de vida.
+	
+	\subsection{Lógica de Cura}
+	Utilizamos a função \texttt{clampi} para garantir que a \textit{vida\_atual} nunca ultrapasse a \textit{vida\_maxima}, mantendo a integridade dos dados:
+	\begin{verbatim}
+		vida_atual = clampi(vida_atual + quantidade, 0, vida_maxima)
+	\end{verbatim}
+	
+	\subsection{Feedback Sonoro}
+	Para aumentar a imersão e o feedback ao jogador, implementamos um sistema de verificação de nó antes da execução do áudio:
+	\begin{itemize}
+		\item \textbf{Som de Dano:} O \textit{HealthComponent} busca um nó \textit{AudioStreamPlayer} chamado "SomDano" utilizando \texttt{get\_node\_or\_null}.
+		\item \textbf{Segurança:} A execução do som é condicionada à existência do nó, evitando \textit{crashes} caso o recurso sonoro não esteja presente na cena.
+	\end{itemize}
+	
+	%--------------------------------------------------------------
+	
+	
 	\section{Inimigos e Desafios}
 	
 	\subsection{Hitbox (Caixa de Ataque)}
